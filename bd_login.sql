@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `proyecto_login`
+-- Base de datos: `bd_login`
 --
 
 -- --------------------------------------------------------
@@ -38,11 +38,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `password`, `email`) VALUES
-(1, 'Alejandro Miranda', '12345', 'alex.miranda.sanchez@gmail.com'),
-(2, 'prueba', 'qaz', 'prueba.com'),
-(3, 'prueba', 'qwe', 'mio.com'),
-(4, 'otro', 'qwe', 'otro.com'),
-(5, 'rigoverto', 'pineda', 'pineda_s@hotmail.com');
+(1, 'admin', 'admin', 'admin@email.com'),
+(2, 'usuario', 'usuario', 'usaurio@email.com');
 
 --
 -- Índices para tablas volcadas
