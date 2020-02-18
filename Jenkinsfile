@@ -17,18 +17,15 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        stage('Sonarqube') {
-        environment {
-            scannerHome = tool 'sonar_scanner'
-        }
-        steps {
-            withSonarQubeEnv('sonar_scanner') {
-                sh "${scannerHome}/bin/sonar-scanner"
-            }
-            timeout(time: 10, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
+        node {
+          stage('SCM') {
+            git 'https://github.com/alexmirandas/proyecto_login.git'
+          }
+          stage('SonarQube analysis') {
+            def scannerHome = tool 'sonar_scanner';
+            withSonarQubeEnv('sonar_scanner') { // If you have configured more than one global server connection, you can specify its name
+              sh "${scannerHome}/bin/sonar-scanner"
             }
         }
-    }
     }
 }
