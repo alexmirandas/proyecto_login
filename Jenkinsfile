@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    stage('SCM') {
-    git 'https://github.com/alexmirandas/proyecto_login.git'
-    }
-
+    
     stages {
         stage('Build') {
             steps {
