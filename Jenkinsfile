@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    node {
+        stage('SCM') {
+        git 'https://github.com/alexmirandas/proyecto_login.git'
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -17,16 +22,11 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        node {
-          stage('SCM') {
-            git 'https://github.com/alexmirandas/proyecto_login.git'
-          }
-          stage('SonarQube analysis') {
+        stage('SonarQube analysis') {
             def scannerHome = tool 'sonar_scanner';
             withSonarQubeEnv('sonar_scanner') { // If you have configured more than one global server connection, you can specify its name
               sh "${scannerHome}/bin/sonar-scanner"
             }
         }
-    }
     }
 }
