@@ -1,9 +1,7 @@
 pipeline {
     agent any
-
-    node {
-        stage('SCM') {
-        git 'https://github.com/alexmirandas/proyecto_login.git'
+    stage('SCM') {
+    git 'https://github.com/alexmirandas/proyecto_login.git'
     }
 
     stages {
